@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="addRoutineViewModel"
+            type="mihirkathpalia.cambio.routine.ui.addRoutine.AddRoutineViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parentConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/backgroundColor">
+
+        <ScrollView
+            android:id="@+id/addRoutineLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavLinearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:paddingBottom="@dimen/double_padding">
+
+                <TextView
+                    android:id="@+id/routineNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:text="@string/routine_name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="?attr/headingTextColor"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/routineNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:background="@drawable/drawable_widget_item_background"
+                    android:hint="@string/routine_name_edit_text_hint"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="textAutoCorrect"
+                    android:longClickable="false"
+                    android:padding="@dimen/double_padding"
+                    android:singleLine="true"
+                    android:text="@{addRoutineViewModel.updateRoutine.routineTitle}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/routineNameTextView"
+                    app:layout_constraintTop_toBottomOf="@id/routineNameTextView" />
+
+                <TextView
+                    android:id="@+id/routineNameEditTextWarningTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:text="@string/routine_name_cannot_be_empty"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/colorWarningText"
+                    android:textStyle="bold"
+                    android:visibility="@{addRoutineViewModel.routineTitleEmpty ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/routineNameEditText" />
+
+                <TextView
+                    android:id="@+id/routineStartTimeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:text="@string/start_time"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="?attr/headingTextColor"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/routineNameEditTextWarningTextView" />
+
+                <LinearLayout
+                    android:id="@+id/startTimeLinearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:background="@drawable/drawable_widget_item_background"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/double_padding"
+                    app:layout_constraintStart_toStartOf="@+id/routineStartTimeTextView"
+                    app:layout_constraintTop_toBottomOf="@id/routineStartTimeTextView">
+
+                    <NumberPicker
+                        android:id="@+id/startTimeHourPicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/AppTheme.Picker" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_margin"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:text="@string/colon"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textStyle="bold" />
+
+                    <NumberPicker
+                        android:id="@+id/startTimeMinutePicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/AppTheme.Picker" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/durationTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/double_margin"
+                    android:text="@string/duration"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="?attr/headingTextColor"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/startTimeLinearLayout"
+                    app:layout_constraintTop_toTopOf="@+id/routineStartTimeTextView" />
+
+                <LinearLayout
+                    android:id="@+id/durationLinearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:background="@drawable/drawable_widget_item_background"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/double_padding"
+                    app:layout_constraintStart_toStartOf="@id/durationTextView"
+                    app:layout_constraintTop_toBottomOf="@id/durationTextView">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <NumberPicker
+                            android:id="@+id/durationHourPicker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/AppTheme.Picker" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/hrs"
+                            android:theme="@style/AppTheme.Picker" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <NumberPicker
+                            android:id="@+id/durationMinutePicker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/AppTheme.Picker" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/mins"
+                            android:theme="@style/AppTheme.Picker" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/endTimeLinearLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:gravity="center_vertical|start"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="@id/startTimeLinearLayout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/startTimeLinearLayout">
+
+                    <TextView
+                        android:id="@+id/endTimeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/end_time"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="?attr/headingTextColor"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:background="@drawable/drawable_widget_item_background"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/double_padding">
+
+                        <TextView
+                            android:id="@+id/endTimeHourTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/small_padding"
+                            android:text="@{addRoutineViewModel.endTimeHourString}"
+                            android:theme="@style/AppTheme.Picker" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/small_padding"
+                            android:text="@string/colon"
+                            android:theme="@style/AppTheme.Picker" />
+
+                        <TextView
+                            android:id="@+id/endTimeMinuteTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/small_padding"
+                            android:text="@{addRoutineViewModel.endTimeMinuteString}"
+                            android:theme="@style/AppTheme.Picker" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/durationWarningTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:singleLine="false"
+                    android:text="@string/duration_must_be_at_least_5_minutes"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/colorWarningText"
+                    android:textStyle="bold"
+                    android:visibility="@{addRoutineViewModel.durationValidity ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toEndOf="@id/durationLinearLayout"
+                    app:layout_constraintStart_toStartOf="@+id/durationLinearLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/durationLinearLayout" />
+
+                <TextView
+                    android:id="@+id/recurrenceTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:text="@string/recurrence"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="?attr/headingTextColor"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/endTimeLinearLayout" />
+
+                <LinearLayout
+                    android:id="@+id/recurrenceLinearLayout"
+                    style="?android:attr/buttonBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/recurrenceTextView"
+                    app:layout_constraintTop_toBottomOf="@id/recurrenceTextView">
+
+                    <Button
+                        android:id="@+id/mondayButton"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/small_margin"
+                        android:layout_weight="1"
+                        android:onClick="@{() -> addRoutineViewModel.mondayOnClick()}"
+                        android:text="@string/monday" />
+
+                    <Button
+                        android:id="@+id/tuesdayButton"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/small_margin"
+                        android:layout_weight="1"
+                        android:onClick="@{() -> addRoutineViewModel.tuesdayOnClick()}"
+                        android:text="@string/tuesday" />
+
+                    <Button
+                        android:id="@+id/wednesdayButton"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/small_margin"
+                        android:layout_weight="1"
+                        android:onClick="@{() -> addRoutineViewModel.wednesdayOnClick()}"
+                        android:text="@string/wednesday" />
+
+                    <Button
+                        android:id="@+id/thursdayButton"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/small_margin"
+                        android:layout_weight="1"
+                        android:onClick="@{() -> addRoutineViewModel.thursdayOnClick()}"
+                        android:text="@string/thursday" />
+
+                    <Button
+                        android:id="@+id/fridayButton"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/small_margin"
+                        android:layout_weight="1"
+                        android:onClick="@{() -> addRoutineViewModel.fridayOnClick()}"
+                        android:text="@string/friday" />
+
+                    <Button
+                        android:id="@+id/saturdayButton"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/small_margin"
+                        android:layout_weight="1"
+                        android:onClick="@{() -> addRoutineViewModel.saturdayOnClick()}"
+                        android:text="@string/saturday" />
+
+                    <Button
+                        android:id="@+id/sundayButton"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/small_margin"
+                        android:layout_weight="1"
+                        android:onClick="@{() -> addRoutineViewModel.sundayOnClick()}"
+                        android:text="@string/sunday" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/recurrenceShortcuts"
+                    style="?android:attr/buttonBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/recurrenceLinearLayout"
+                    app:layout_constraintTop_toBottomOf="@id/recurrenceLinearLayout">
+
+                    <Button
+                        android:id="@+id/everydayButton"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/small_margin"
+                        android:background="@drawable/drawable_widget_item_background"
+                        android:onClick="@{() -> addRoutineViewModel.everydayOnClick()}"
+                        android:padding="@dimen/small_padding"
+                        android:text="@string/everyday" />
+
+                    <Button
+                        android:id="@+id/weekdayButton"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/small_margin"
+                        android:background="@drawable/drawable_widget_item_background"
+                        android:onClick="@{() -> addRoutineViewModel.weekdaysOnClick()}"
+                        android:padding="@dimen/small_padding"
+                        android:text="@string/weekdays" />
+
+                    <Button
+                        android:id="@+id/weekendsButton"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/small_margin"
+                        android:background="@drawable/drawable_widget_item_background"
+                        android:onClick="@{() -> addRoutineViewModel.weekendOnClick()}"
+                        android:padding="@dimen/small_padding"
+                        android:text="@string/weekend" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/recurrenceWarningTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:text="@string/select_at_least_one_day_of_the_week"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/colorWarningText"
+                    android:textStyle="bold"
+                    android:visibility="@{addRoutineViewModel.recurrenceEmpty ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recurrenceShortcuts" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/bottomNavLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryLight"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addRoutineLayout">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:background="@drawable/drawable_button_effect"
+                android:contentDescription="@string/settings"
+                android:onClick="@{() -> addRoutineViewModel.backOnClick()}"
+                android:padding="@dimen/default_padding"
+                app:srcCompat="@drawable/ic_back" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.6" />
+
+            <ImageButton
+                android:id="@+id/saveButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:background="@drawable/drawable_button_effect"
+                android:contentDescription="@string/add_routine"
+                android:onClick="@{() -> addRoutineViewModel.onSave(routineNameEditText.getText().toString(), durationHourPicker.getValue(), durationMinutePicker.getValue())}"
+                android:padding="@dimen/default_padding"
+                app:srcCompat="@drawable/ic_save" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

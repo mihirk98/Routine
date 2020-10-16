@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="buttonPressedBackgroundColor" format="color"/>
+    <attr name="buttonBackgroundColor" format="color"/>
+    <attr name="recurrenceButtonSelected" format="color"/>
+    <attr name="widgetBackgroundColor" format="color"/>
+    <attr name="widgetBorderColor" format="color"/>
+    <attr name="routineBackgroundColor" format="color"/>
+    <attr name="bottomNavBackgroundColor" format="color"/>
+    <attr name="backgroundColor" format="color"/>
+    <attr name="headingTextColor" format="color"/>
+</resources>

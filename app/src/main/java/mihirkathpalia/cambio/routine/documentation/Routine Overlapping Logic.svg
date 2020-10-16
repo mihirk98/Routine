@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="280" viewBox="0 0 400 280">
+  <defs>
+    <clipPath id="clip-Routine_Overlapping_Logic">
+      <rect width="400" height="280"/>
+    </clipPath>
+  </defs>
+  <g id="Routine_Overlapping_Logic" clip-path="url(#clip-Routine_Overlapping_Logic)">
+    <rect width="400" height="280" fill="#fff"/>
+    <g id="Rectangle_5" transform="translate(276 88)" fill="#268409" stroke="#268409" stroke-width="1">
+      <rect width="108" height="112" stroke="none"/>
+      <rect x="0.5" y="0.5" width="107" height="111" fill="none"/>
+    </g>
+    <g id="Rectangle_4" transform="translate(16 88)" fill="#268409" stroke="#268409" stroke-width="1">
+      <rect width="108" height="112" stroke="none"/>
+      <rect x="0.5" y="0.5" width="107" height="111" fill="none"/>
+    </g>
+    <g id="Rectangle_1" transform="translate(344 8)" stroke="#000" stroke-width="1">
+      <rect width="40" height="16" stroke="none"/>
+      <rect x="0.5" y="0.5" width="39" height="15" fill="none"/>
+    </g>
+    <g id="Rectangle_2" transform="translate(344 56)" fill="#268409" stroke="#268409" stroke-width="1">
+      <rect width="40" height="16" stroke="none"/>
+      <rect x="0.5" y="0.5" width="39" height="15" fill="none"/>
+    </g>
+    <g id="Rectangle_3" transform="translate(344 32)" fill="red" stroke="red" stroke-width="1">
+      <rect width="40" height="16" stroke="none"/>
+      <rect x="0.5" y="0.5" width="39" height="15" fill="none"/>
+    </g>
+    <text id="Routine" transform="translate(280 21)" font-size="13" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">Routine</tspan></text>
+    <text id="Overlap" transform="translate(280 45)" font-size="13" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">Overlap</tspan></text>
+    <text id="Allowed" transform="translate(278 69)" font-size="13" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">Allowed</tspan></text>
+    <line id="Line_1" x1="400" transform="translate(0 80)" fill="none" stroke="#707070" stroke-width="1"/>
+    <line id="Line_2" x2="152" transform="translate(124 144)" fill="none" stroke="#000" stroke-width="1"/>
+    <line id="Line_4" x2="20" transform="translate(104 168)" fill="none" stroke="#268409" stroke-width="1"/>
+    <line id="Line_5" x2="52" transform="translate(124 104)" fill="none" stroke="red" stroke-width="1"/>
+    <line id="Line_6" y1="112" transform="translate(124 88)" fill="none" stroke="#000" stroke-width="1"/>
+    <line id="Line_7" y1="112" transform="translate(276 88)" fill="none" stroke="#000" stroke-width="1"/>
+    <line id="Line_8" x2="60" transform="translate(104 176)" fill="none" stroke="red" stroke-width="1"/>
+    <line id="Line_9" x2="60" transform="translate(248 176)" fill="none" stroke="red" stroke-width="1"/>
+    <line id="Line_10" x2="192" transform="translate(104 184)" fill="none" stroke="red" stroke-width="1"/>
+    <line id="Line_13" x2="208" transform="translate(124 96)" fill="none" stroke="red" stroke-width="1"/>
+    <line id="Line_14" x2="28" transform="translate(248 168)" fill="none" stroke="red" stroke-width="1"/>
+    <text id="st" transform="translate(108 146)" font-size="13" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">st</tspan></text>
+    <text id="et" transform="translate(280 146)" font-size="13" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">et</tspan></text>
+    <line id="Line_15" x2="152" transform="translate(124 112)" fill="none" stroke="red" stroke-width="1"/>
+    <line id="Line_16" x2="16" transform="translate(248 160)" fill="none" stroke="red" stroke-width="1"/>
+    <text id="st_-_startTime:_routine" transform="translate(16 22)" font-size="10" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">st -&gt; startTime: routine</tspan></text>
+    <text id="et_-_endTime:_routine" transform="translate(16 34)" font-size="10" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">et -&gt; endTime: routine</tspan></text>
+    <text id="rst_-_array_of_routine_start_times" transform="translate(16 46)" font-size="10" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">rst -&gt; array of routine start times</tspan></text>
+    <text id="ret_-_array_of_routine_end_times" transform="translate(16 58)" font-size="10" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">ret -&gt; array of routine end times</tspan></text>
+    <line id="Line_17" x1="400" transform="translate(0 208)" fill="none" stroke="#707070" stroke-width="1"/>
+    <text id="Conditions_for_overlap_error_true_" transform="translate(16 226)" font-size="10" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">Conditions for overlap_error=true,</tspan></text>
+    <text id="_1_st_rst_-_ret_st_" transform="translate(16 242)" font-size="10" font-family="HelveticaNeue-Medium, Helvetica Neue" font-weight="500"><tspan x="0" y="0">1) st&gt;rst -&gt; ret&gt;st </tspan></text>
+    <text id="_2_st_rst" transform="translate(16 258)" font-size="10" font-family="HelveticaNeue-Medium, Helvetica Neue" font-weight="500"><tspan x="0" y="0">2) st=rst</tspan></text>
+    <text id="_3_st_rst_-_rst_et" transform="translate(16 274)" font-size="10" font-family="HelveticaNeue-Medium, Helvetica Neue" font-weight="500"><tspan x="0" y="0">3) st&lt;rst -&gt; rst&lt;et</tspan></text>
+  </g>
+</svg>

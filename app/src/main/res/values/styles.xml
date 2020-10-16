@@ -1,0 +1,41 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:editTextColor">@color/colorText</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="buttonBackgroundColor">@color/colorPrimaryLight</item>
+    </style>
+
+    <style name="LightTheme" parent="AppTheme">
+        <item name="backgroundColor">@color/colorLightBackground</item>
+        <item name="buttonPressedBackgroundColor">@color/colorButtonPressLight</item>
+        <item name="headingTextColor">@color/headingTextColorLight</item>
+        <item name="widgetBackgroundColor">@color/colorWidgetBackgroundLight</item>
+        <item name="widgetBorderColor">@color/colorWidgetBorderLight</item>
+        <item name="recurrenceButtonSelected">@color/colorRecurrenceButtonSelectedLight</item>
+        <item name="bottomNavBackgroundColor">@color/colorBottomNavBackgroundLight</item>
+        <item name="colorAccent">@color/colorAccentLight</item>
+        <item name="routineBackgroundColor">@color/colorPrimaryLight</item>
+    </style>
+
+    <style name="DarkTheme" parent="AppTheme">
+        <item name="backgroundColor">@color/colorDarkBackground</item>
+        <item name="buttonPressedBackgroundColor">@color/colorButtonPressDark</item>
+        <item name="headingTextColor">@color/headingTextColorDark</item>
+        <item name="widgetBackgroundColor">@color/colorWidgetBackgroundDark</item>
+        <item name="widgetBorderColor">@color/colorWidgetBorderDark</item>
+        <item name="recurrenceButtonSelected">@color/colorRecurrenceButtonSelectedDark</item>
+        <item name="bottomNavBackgroundColor">@color/colorBottomNavBackgroundDark</item>
+        <item name="colorAccent">@color/colorAccentDark</item>
+        <item name="routineBackgroundColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Picker" parent="Theme.AppCompat.DayNight.NoActionBar" >
+        <item name="android:textColorPrimary">@color/colorText</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#8d6e63</color>
+    <color name="colorPrimaryDark">#5f4339</color>
+    <color name="colorPrimaryLight">#be9c91</color>
+    <color name="colorText">#000000</color>
+    <color name="colorWarningText">#b71c1c</color>
+
+    // Light
+    <color name="colorButtonPressLight">#a98274</color>
+    <color name="colorLightBackground">#e0e0e0</color>
+    <color name="headingTextColorDark">#bdbdbd</color>
+    <color name="colorWidgetBackgroundLight">#33be9c91</color>
+    <color name="colorWidgetBorderLight">@color/colorPrimaryLight</color>
+    <color name="colorRecurrenceButtonSelectedLight">@color/colorPrimaryLight</color>
+    <color name="colorBottomNavBackgroundLight">@color/colorPrimaryLight</color>
+    <color name="colorAccentLight">@color/colorPrimary</color>
+
+    // Dark
+    <color name="colorButtonPressDark">#d3b8ae</color>
+    <color name="colorDarkBackground">#212121</color>
+    <color name="headingTextColorLight">#616161</color>
+    <color name="colorWidgetBackgroundDark">@color/colorPrimary</color>
+    <color name="colorWidgetBorderDark">@color/colorPrimaryDark</color>
+    <color name="colorRecurrenceButtonSelectedDark">@color/colorPrimaryDark</color>
+    <color name="colorBottomNavBackgroundDark">@color/colorPrimaryLight</color>
+    <color name="colorAccentDark">@color/colorPrimaryDark</color>
+</resources>

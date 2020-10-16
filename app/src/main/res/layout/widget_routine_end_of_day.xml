@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bufferTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
+    android:gravity="center"
+    android:paddingStart="@dimen/default_padding"
+    android:paddingTop="@dimen/double_padding"
+    android:paddingEnd="@dimen/default_padding"
+    android:paddingBottom="@dimen/double_padding"
+    android:singleLine="false"
+    android:text="@string/end_of_day"
+    android:textColor="@color/colorText"
+    android:textSize="24sp"
+    android:textStyle="bold" />

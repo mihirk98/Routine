@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="settingsViewModel"
+            type="mihirkathpalia.cambio.routine.ui.settings.SettingsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/backgroundColor">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/addRoutineConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavLinearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavLinearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/widgetSettingsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:text="@string/widget"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="?attr/headingTextColor"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:background="@drawable/drawable_widget_item_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/double_padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="@string/auto_refresh_widget"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/off" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/autoRefreshWidgetSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:checked="@{settingsViewModel.autoRefreshWidgetState}"
+                        android:enabled="@{settingsViewModel.autoRefreshSwitchState}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/on" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/generalSettingsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:text="@string/general"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="?attr/headingTextColor"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:background="@drawable/drawable_widget_item_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/double_padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="@string/share_app"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                    <ImageButton
+                        android:id="@+id/shareButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/drawable_button_effect"
+                        android:onClick="@{() -> settingsViewModel.shareOnClick()}"
+                        android:contentDescription="@string/share_app"
+                        android:padding="@dimen/default_padding"
+                        app:srcCompat="@drawable/ic_share" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:background="@drawable/drawable_widget_item_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/double_padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="@string/rate_app"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                    <ImageButton
+                        android:id="@+id/rateButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/drawable_button_effect"
+                        android:onClick="@{() -> settingsViewModel.rateOnClick()}"
+                        android:contentDescription="@string/share_app"
+                        android:padding="@dimen/default_padding"
+                        app:srcCompat="@drawable/ic_rate" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:background="@drawable/drawable_widget_item_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/double_padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="@string/send_feedback"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                    <ImageButton
+                        android:id="@+id/feedbackButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/drawable_button_effect"
+                        android:onClick="@{() -> settingsViewModel.feedbackOnClick()}"
+                        android:contentDescription="@string/share_app"
+                        android:padding="@dimen/default_padding"
+                        app:srcCompat="@drawable/ic_feedback" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/aboutSettingsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:text="@string/about"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="?attr/headingTextColor"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:background="@drawable/drawable_widget_item_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/double_padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="@string/version"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@{settingsViewModel.appVersion}" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/bottomNavLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryLight"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addRoutineConstraintLayout">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.8" />
+
+            <ImageButton
+                android:id="@+id/saveButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:background="@drawable/drawable_button_effect"
+                android:contentDescription="@string/add_routine"
+                android:onClick="@{() -> settingsViewModel.backOnClick()}"
+                android:padding="@dimen/default_padding"
+                app:srcCompat="@drawable/ic_forward" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

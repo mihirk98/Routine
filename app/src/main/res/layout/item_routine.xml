@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="routine"
+            type="mihirkathpalia.cambio.routine.database.Routine" />
+        <variable
+            name="routineClickListener" type="mihirkathpalia.cambio.routine.ui.routines.RoutineItemListener"/>
+        <variable
+            name="routineDeleteClickListener" type="mihirkathpalia.cambio.routine.ui.routines.RoutineItemListener"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:baselineAligned="false"
+        android:onClick="@{() -> routineClickListener.onClick(routine)}">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="@dimen/default_padding"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/routineStartTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|end"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="?attr/headingTextColor"
+                android:textStyle="bold"
+                android:singleLine="false"
+                app:routineStartTimeString="@{routine}"/>
+
+            <TextView
+                android:id="@+id/routineEndTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|end"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="?attr/headingTextColor"
+                android:singleLine="false"
+                app:routineEndTimeString="@{routine}"/>
+
+        </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="@dimen/default_padding"
+        android:background="@drawable/drawable_routine_background">
+
+        <TextView
+            android:id="@+id/routineTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="start|center_vertical"
+            android:singleLine="false"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:routineTitleString="@{routine}"/>
+
+        <TextView
+            android:id="@+id/routineRecurrence"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/routineDelete"
+            app:layout_constraintTop_toBottomOf="@id/routineTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/routineDelete"
+            android:gravity="start|center_vertical"
+            android:singleLine="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:routineRecurrenceString="@{routine}"/>
+
+        <ImageButton
+            android:id="@+id/routineDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_delete"
+            android:background="@drawable/drawable_routine_background"
+            app:layout_constraintStart_toEndOf="@id/routineRecurrence"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/routineTitle"
+            android:contentDescription="@string/delete_routine"
+            android:onClick="@{() -> routineDeleteClickListener.onClick(routine)}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</layout>

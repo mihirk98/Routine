@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/routinesFragment">
+
+    <fragment
+        android:id="@+id/routinesFragment"
+        android:name="mihirkathpalia.cambio.routine.ui.routines.RoutinesFragment"
+        android:label="RoutinesFragment"
+        tools:layout="@layout/fragment_routines" >
+        <action
+            android:id="@+id/action_routinesFragment_to_addRoutineFragment"
+            app:destination="@id/addRoutineFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" >
+            <argument
+                android:name="routineId"
+                app:argType="long" />
+        </action>
+        <action
+            android:id="@+id/action_routinesFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addRoutineFragment"
+        android:name="mihirkathpalia.cambio.routine.ui.addRoutine.AddRoutineFragment"
+        android:label="AddRoutineFragment"
+        tools:layout="@layout/fragment_add_routine" >
+        <argument
+            android:name="routineId"
+            app:argType="long" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="mihirkathpalia.cambio.routine.ui.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>
