@@ -6,16 +6,15 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
 import android.widget.RemoteViews
 import android.widget.Toast
 import androidx.work.*
-import mihirkathpalia.cambio.routine.MainActivity
+import mihirkathpalia.cambio.routine.*
 import mihirkathpalia.cambio.routine.R
 import mihirkathpalia.cambio.routine.database.Routine
-import mihirkathpalia.cambio.routine.syncWork
-import mihirkathpalia.cambio.routine.updateWidgets
 import mihirkathpalia.cambio.routine.work.WidgetSyncWorker
 import java.util.concurrent.TimeUnit
 
@@ -24,12 +23,34 @@ const val syncClicked = "android.appwidget.action.SYNC"
 class RoutinesWidget : AppWidgetProvider() {
 
     override fun onEnabled(context: Context?) {
-        context?.let { syncWork(context) }
+        context?.let {
+
+            val sharedPreferences: SharedPreferences = context.getSharedPreferences(
+                sharedPrefFile,
+                Context.MODE_PRIVATE
+            )
+            val editor: SharedPreferences.Editor = sharedPreferences.edit()
+            editor.putBoolean(syncWorkSharedPref, true)
+            editor.apply()
+
+            syncWork(context)
+        }
         super.onEnabled(context)
     }
 
     override fun onDisabled(context: Context?) {
-        context?.let { WorkManager.getInstance(context).cancelAllWorkByTag(syncWork) }
+        context?.let {
+
+            val sharedPreferences: SharedPreferences = context.getSharedPreferences(
+                sharedPrefFile,
+                Context.MODE_PRIVATE
+            )
+            val editor: SharedPreferences.Editor = sharedPreferences.edit()
+            editor.putBoolean(syncWorkSharedPref, false)
+            editor.apply()
+
+            WorkManager.getInstance(context).cancelAllWorkByTag(syncWork)
+        }
         super.onDisabled(context)
     }
 
