@@ -101,70 +101,51 @@ class SettingsViewModel(val application: Application) : ViewModel() {
         _navigateToRoutines.value = true
     }
 
-    fun shareOnClick() {
-        val sendIntent: Intent = Intent().apply {
-            action = Intent.ACTION_SEND
-            putExtra(
-                Intent.EXTRA_TEXT,
-                "Routine - Visualize your day, week, life\nhttps://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID
-            )
-            type = "text/plain"
-        }
+    private val _navigateToShare = MutableLiveData<Boolean>()
+    val navigateToShare: LiveData<Boolean>
+        get() = _navigateToShare
 
-        val shareIntent = Intent.createChooser(sendIntent, null)
-        application.startActivity(shareIntent)
+    fun shareOnClick() {
+        _navigateToShare.value = true
     }
+
+    fun shareOnClickComplete() {
+        _navigateToShare.value = false
+    }
+
+    private val _navigateToRate = MutableLiveData<Boolean>()
+    val navigateToRate: LiveData<Boolean>
+        get() = _navigateToRate
 
     fun rateOnClick() {
-        val uri: Uri = Uri.parse("market://details?id=" + BuildConfig.APPLICATION_ID)
-        val goToMarket = Intent(Intent.ACTION_VIEW, uri)
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            goToMarket.addFlags(
-                Intent.FLAG_ACTIVITY_NO_HISTORY or
-                        Intent.FLAG_ACTIVITY_NEW_DOCUMENT or
-                        Intent.FLAG_ACTIVITY_MULTIPLE_TASK
-            )
-        } else {
-            goToMarket.addFlags(
-                Intent.FLAG_ACTIVITY_NO_HISTORY or
-                        Intent.FLAG_ACTIVITY_MULTIPLE_TASK
-            )
-        }
-        try {
-            application.startActivity(goToMarket)
-        } catch (e: ActivityNotFoundException) {
-            application.startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("http://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID)
-                )
-            )
-        }
+        _navigateToRate.value = true
     }
 
-    private val _noFeedbackClient = MutableLiveData<Boolean>().apply { postValue(false) }
-    val noFeedbackClient: LiveData<Boolean>
-        get() = _noFeedbackClient
+    fun rateOnClickComplete() {
+        _navigateToRate.value = false
+    }
+
+    private val _navigateToFeedback = MutableLiveData<Boolean>()
+    val navigateToFeedback: LiveData<Boolean>
+        get() = _navigateToFeedback
 
     fun feedbackOnClick() {
-        val i = Intent(Intent.ACTION_SENDTO)
-        i.type = "message/rfc822"
-        i.data = Uri.parse("mailto:")
-        i.putExtra(Intent.EXTRA_EMAIL, arrayOf("cambiomobile@gmail.com"))
-        i.putExtra(Intent.EXTRA_SUBJECT, application.getString(R.string.routine_feedback))
-        try {
-            application.startActivity(
-                Intent.createChooser(
-                    i,
-                    application.getString(R.string.send_feedback)
-                )
-            )
-        } catch (ex: ActivityNotFoundException) {
-            _noFeedbackClient.value = true
-        }
+        _navigateToFeedback.value = true
     }
 
     fun feedbackOnCLickComplete() {
-        _noFeedbackClient.value = false
+        _navigateToFeedback.value = false
+    }
+
+    private val _navigateToPrivacyPolicy = MutableLiveData<Boolean>()
+    val navigateToPrivacyPolicy: LiveData<Boolean>
+        get() = _navigateToPrivacyPolicy
+
+    fun privacyPolicyOnClick() {
+        _navigateToPrivacyPolicy.value = true
+    }
+
+    fun privacyPolicyOnClickComplete() {
+        _navigateToPrivacyPolicy.value = false
     }
 }

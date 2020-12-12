@@ -102,7 +102,7 @@ class RoutineWidgetRemoteViewsFactory(
     }
 
     override fun getViewTypeCount(): Int {
-        return 3
+        return 4
     }
 
     override fun getItemId(p0: Int): Long {
@@ -146,8 +146,10 @@ class RoutineWidgetRemoteViewsFactory(
     private fun routinesSetUp() {
         routineBuffer.clear()
         routineViewType.clear()
+        var noRoutine = true
 
         for (i in routines.indices) {
+            noRoutine = false
             val startTime = routines[i].startTime
             val endTime = routines[i].endTime
 
@@ -215,8 +217,12 @@ class RoutineWidgetRemoteViewsFactory(
                     )
                 }
             }
-
         }
+
+        if(noRoutine) {
+            setNextWork(3, -1)
+        }
+
     }
 
     private fun setNextWork(active: Int, index: Int) {

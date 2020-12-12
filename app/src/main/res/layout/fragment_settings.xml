@@ -225,6 +225,34 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="start|center_vertical"
+                        android:text="@string/privacy_policy"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                    <ImageButton
+                        android:id="@+id/privacyPolicyButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/drawable_button_effect"
+                        android:onClick="@{() -> settingsViewModel.privacyPolicyOnClick()}"
+                        android:contentDescription="@string/share_app"
+                        android:padding="@dimen/default_padding"
+                        app:srcCompat="@drawable/ic_policy" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:background="@drawable/drawable_widget_item_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/double_padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
                         android:text="@string/version"
                         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 

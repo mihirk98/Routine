@@ -1,23 +1,26 @@
 package mihirkathpalia.cambio.routine
 
-import android.app.Application
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.util.Log
 import androidx.work.*
+import mihirkathpalia.cambio.routine.ui.routineWidget.RoutineWidgetAlarm
 import mihirkathpalia.cambio.routine.ui.routineWidget.RoutinesWidget
 import mihirkathpalia.cambio.routine.work.WidgetSyncWorker
 import java.util.*
 import java.util.concurrent.TimeUnit
 
 const val syncWork = "syncWorker"
+const val routineWidgetAlarm = "routineWidgetAlarm"
 const val sharedPrefFile = "routineSharedPrefFile"
 const val themeSharedPref = "themeSharedPref"
 const val syncWorkSharedPref = "syncWorkSharedPref"
 const val refreshDelaySharedPref = "refreshDelaySharedPref"
-const val clockTypeSharedPref = "clockTypeSharedPref"
 
 fun updateWidgets(context: Context) {
     Log.i("Tag", "updateWidgets()")
@@ -39,6 +42,15 @@ fun syncWork(context: Context) {
     )
     val delay = sharedPreferences.getLong(refreshDelaySharedPref, 0L)
 
+    Log.i("Tag", "delay: $delay")
+
+    scheduleWork(context, delay)
+
+    scheduleAlarm(context, delay)
+}
+
+fun scheduleWork(context: Context, delay: Long) {
+
     val constraints = Constraints.Builder()
         .setRequiresBatteryNotLow(true)
         .build()
@@ -56,6 +68,30 @@ fun syncWork(context: Context) {
 
     WorkManager.getInstance(context)
         .enqueueUniqueWork(syncWork, ExistingWorkPolicy.REPLACE, syncWorkRequest)
+}
+
+fun scheduleAlarm(context: Context, delay: Long) {
+    val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+    val intent = Intent(context, RoutineWidgetAlarm::class.java)
+    intent.action = routineWidgetAlarm
+    intent.putExtra(routineWidgetAlarm, "Routine Widget Sync Alarm")
+
+    val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
+
+    val alarmTimeAtUTC = System.currentTimeMillis() + delay
+
+    when {
+        android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M -> {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, alarmTimeAtUTC, pendingIntent)
+        }
+        android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP -> {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmTimeAtUTC, pendingIntent)
+        }
+        else -> {
+            alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTimeAtUTC, pendingIntent)
+        }
+    }
 }
 
 fun formatTime(hour: Int, minute: Int): Double {

@@ -56,5 +56,6 @@
     <string name="routine_feedback">Routine Feedback</string>
     <string name="kindly_email_us">Kindly email us your feedback at cambiomobile@gmail.com</string>
     <string name="widgets_might_not_always_refresh_precisely_and_may_require_manual_refreshes_all_auto_refreshes_are_done_as_deferrable_background_work_to_prioritize_battery_life">Widgets might not always refresh precisely and may require manual refreshes. All auto refreshes are done as deferrable background work to prioritize battery life.</string>
+    <string name="privacy_policy">Privacy Policy</string>
 
 </resources>
