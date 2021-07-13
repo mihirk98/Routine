@@ -74,7 +74,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="start|center_vertical"
-                            android:text="@string/widgets_might_not_always_refresh_precisely_and_may_require_manual_refreshes_all_auto_refreshes_are_done_as_deferrable_background_work_to_prioritize_battery_life"
+                            android:text="@string/auto_refresh"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
                     </LinearLayout>

@@ -23,6 +23,7 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/bottomNavLinearLayout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -79,193 +80,211 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/routineNameEditText" />
 
-                <TextView
-                    android:id="@+id/routineStartTimeTextView"
-                    android:layout_width="wrap_content"
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/StartTimeAndDurationPickerFlexBoxLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_margin"
-                    android:layout_marginTop="@dimen/large_margin"
-                    android:layout_marginEnd="@dimen/default_margin"
-                    android:layout_marginBottom="@dimen/default_margin"
-                    android:text="@string/start_time"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="?attr/headingTextColor"
-                    android:textStyle="bold"
+                    android:padding="@dimen/default_padding"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:alignItems="flex_start"
+                    app:alignContent="stretch"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/routineNameEditTextWarningTextView" />
-
-                <LinearLayout
-                    android:id="@+id/startTimeLinearLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/medium_margin"
-                    android:background="@drawable/drawable_widget_item_background"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/double_padding"
-                    app:layout_constraintStart_toStartOf="@+id/routineStartTimeTextView"
-                    app:layout_constraintTop_toBottomOf="@id/routineStartTimeTextView">
-
-                    <NumberPicker
-                        android:id="@+id/startTimeHourPicker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/AppTheme.Picker" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/default_margin"
-                        android:layout_marginEnd="@dimen/default_margin"
-                        android:text="@string/colon"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textStyle="bold" />
-
-                    <NumberPicker
-                        android:id="@+id/startTimeMinutePicker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/AppTheme.Picker" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/durationTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/double_margin"
-                    android:text="@string/duration"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="?attr/headingTextColor"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@id/startTimeLinearLayout"
-                    app:layout_constraintTop_toTopOf="@+id/routineStartTimeTextView" />
-
-                <LinearLayout
-                    android:id="@+id/durationLinearLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/medium_margin"
-                    android:background="@drawable/drawable_widget_item_background"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/double_padding"
-                    app:layout_constraintStart_toStartOf="@id/durationTextView"
-                    app:layout_constraintTop_toBottomOf="@id/durationTextView">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <NumberPicker
-                            android:id="@+id/durationHourPicker"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:theme="@style/AppTheme.Picker" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/hrs"
-                            android:theme="@style/AppTheme.Picker" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <NumberPicker
-                            android:id="@+id/durationMinutePicker"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:theme="@style/AppTheme.Picker" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/mins"
-                            android:theme="@style/AppTheme.Picker" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/endTimeLinearLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_margin"
-                    android:layout_marginTop="@dimen/medium_margin"
-                    android:gravity="center_vertical|start"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="@id/startTimeLinearLayout"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/startTimeLinearLayout">
-
-                    <TextView
-                        android:id="@+id/endTimeTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/end_time"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="?attr/headingTextColor"
-                        android:textStyle="bold" />
+                    app:layout_constraintTop_toBottomOf="@id/routineNameEditTextWarningTextView">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/default_margin"
-                        android:background="@drawable/drawable_widget_item_background"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/double_padding">
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/endTimeHourTextView"
+                            android:id="@+id/routineStartTimeTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/small_padding"
-                            android:text="@{addRoutineViewModel.endTimeHourString}"
-                            android:theme="@style/AppTheme.Picker" />
+                            android:layout_marginTop="@dimen/large_margin"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:text="@string/start_time"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="?attr/headingTextColor"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/startTimeLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/medium_margin"
+                            android:background="@drawable/drawable_widget_item_background"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/double_padding">
+
+                            <NumberPicker
+                                android:id="@+id/startTimeHourPicker"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:theme="@style/AppTheme.Picker" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/default_margin"
+                                android:layout_marginEnd="@dimen/default_margin"
+                                android:text="@string/colon"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                android:textStyle="bold" />
+
+                            <NumberPicker
+                                android:id="@+id/startTimeMinutePicker"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:theme="@style/AppTheme.Picker" />
+
+                        </LinearLayout>
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/durationWarningTextView"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/small_padding"
-                            android:text="@string/colon"
-                            android:theme="@style/AppTheme.Picker" />
-
-                        <TextView
-                            android:id="@+id/endTimeMinuteTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/small_padding"
-                            android:text="@{addRoutineViewModel.endTimeMinuteString}"
-                            android:theme="@style/AppTheme.Picker" />
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:minLines="3"
+                            android:text="@string/duration_must_be_at_least_5_minutes"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:textColor="@color/colorWarningText"
+                            android:textStyle="bold"
+                            android:visibility="@{addRoutineViewModel.durationValidity ? View.VISIBLE : View.GONE}" />
 
                     </LinearLayout>
 
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/durationWarningTextView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_margin"
-                    android:singleLine="false"
-                    android:text="@string/duration_must_be_at_least_5_minutes"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@color/colorWarningText"
-                    android:textStyle="bold"
-                    android:visibility="@{addRoutineViewModel.durationValidity ? View.VISIBLE : View.GONE}"
-                    app:layout_constraintEnd_toEndOf="@id/durationLinearLayout"
-                    app:layout_constraintStart_toStartOf="@+id/durationLinearLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/durationLinearLayout" />
+                        <TextView
+                            android:id="@+id/durationTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/large_margin"
+                            android:text="@string/duration"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="?attr/headingTextColor"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/durationLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/medium_margin"
+                            android:background="@drawable/drawable_widget_item_background"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/double_padding">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <NumberPicker
+                                    android:id="@+id/durationHourPicker"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:theme="@style/AppTheme.Picker" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/hrs"
+                                    android:theme="@style/AppTheme.Picker" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <NumberPicker
+                                    android:id="@+id/durationMinutePicker"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:theme="@style/AppTheme.Picker" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/mins"
+                                    android:theme="@style/AppTheme.Picker" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/endTimeLinearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/endTimeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/large_margin"
+                            android:text="@string/end_time"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="?attr/headingTextColor"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:background="@drawable/drawable_widget_item_background"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/double_padding">
+
+                            <TextView
+                                android:id="@+id/endTimeHourTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/small_padding"
+                                android:text="@{addRoutineViewModel.endTimeHourString}"
+                                android:theme="@style/AppTheme.Picker" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/small_padding"
+                                android:text="@string/colon"
+                                android:theme="@style/AppTheme.Picker" />
+
+                            <TextView
+                                android:id="@+id/endTimeMinuteTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/small_padding"
+                                android:text="@{addRoutineViewModel.endTimeMinuteString}"
+                                android:theme="@style/AppTheme.Picker" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </com.google.android.flexbox.FlexboxLayout>
 
                 <TextView
                     android:id="@+id/recurrenceTextView"
@@ -273,26 +292,25 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_margin"
                     android:layout_marginTop="@dimen/large_margin"
-                    android:layout_marginEnd="@dimen/default_margin"
                     android:layout_marginBottom="@dimen/default_margin"
                     android:text="@string/recurrence"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="?attr/headingTextColor"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/endTimeLinearLayout" />
+                    app:layout_constraintTop_toBottomOf="@id/StartTimeAndDurationPickerFlexBoxLayout" />
 
-                <LinearLayout
-                    android:id="@+id/recurrenceLinearLayout"
-                    style="?android:attr/buttonBarStyle"
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/recurrenceDayFlexBoxLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_margin"
                     android:layout_marginTop="@dimen/medium_margin"
                     android:layout_marginEnd="@dimen/default_margin"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="7"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:alignItems="flex_start"
+                    app:alignContent="stretch"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/recurrenceTextView"
                     app:layout_constraintTop_toBottomOf="@id/recurrenceTextView">
@@ -300,86 +318,82 @@
                     <Button
                         android:id="@+id/mondayButton"
                         style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/small_margin"
-                        android:layout_weight="1"
                         android:onClick="@{() -> addRoutineViewModel.mondayOnClick()}"
                         android:text="@string/monday" />
 
                     <Button
                         android:id="@+id/tuesdayButton"
                         style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/small_margin"
-                        android:layout_weight="1"
                         android:onClick="@{() -> addRoutineViewModel.tuesdayOnClick()}"
                         android:text="@string/tuesday" />
 
                     <Button
                         android:id="@+id/wednesdayButton"
                         style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/small_margin"
-                        android:layout_weight="1"
                         android:onClick="@{() -> addRoutineViewModel.wednesdayOnClick()}"
                         android:text="@string/wednesday" />
 
                     <Button
                         android:id="@+id/thursdayButton"
                         style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/small_margin"
-                        android:layout_weight="1"
                         android:onClick="@{() -> addRoutineViewModel.thursdayOnClick()}"
                         android:text="@string/thursday" />
 
                     <Button
                         android:id="@+id/fridayButton"
                         style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/small_margin"
-                        android:layout_weight="1"
                         android:onClick="@{() -> addRoutineViewModel.fridayOnClick()}"
                         android:text="@string/friday" />
 
                     <Button
                         android:id="@+id/saturdayButton"
                         style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/small_margin"
-                        android:layout_weight="1"
                         android:onClick="@{() -> addRoutineViewModel.saturdayOnClick()}"
                         android:text="@string/saturday" />
 
                     <Button
                         android:id="@+id/sundayButton"
                         style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/small_margin"
-                        android:layout_weight="1"
+                        android:layout_gravity="center"
                         android:onClick="@{() -> addRoutineViewModel.sundayOnClick()}"
                         android:text="@string/sunday" />
 
-                </LinearLayout>
+                </com.google.android.flexbox.FlexboxLayout>
 
-                <LinearLayout
+                <com.google.android.flexbox.FlexboxLayout
                     android:id="@+id/recurrenceShortcuts"
-                    style="?android:attr/buttonBarStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_margin"
                     android:layout_marginEnd="@dimen/default_margin"
-                    android:orientation="horizontal"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:alignItems="flex_start"
+                    app:alignContent="stretch"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/recurrenceLinearLayout"
-                    app:layout_constraintTop_toBottomOf="@id/recurrenceLinearLayout">
+                    app:layout_constraintStart_toStartOf="@id/recurrenceDayFlexBoxLayout"
+                    app:layout_constraintTop_toBottomOf="@id/recurrenceDayFlexBoxLayout">
 
                     <Button
                         android:id="@+id/everydayButton"
@@ -414,7 +428,7 @@
                         android:padding="@dimen/small_padding"
                         android:text="@string/weekend" />
 
-                </LinearLayout>
+                </com.google.android.flexbox.FlexboxLayout>
 
                 <TextView
                     android:id="@+id/recurrenceWarningTextView"
